@@ -1,27 +1,33 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <string>
+#include <vector>
+#include "enemies.h"
 using namespace std;
 
-class Rooms; // forward declare (no need to include locations.h here)
+class Rooms;
 
 class Player
 {
 public:
-    std::string name;
+    string name = "Hero";
     int score = 0;
-    int health = 50;
+    int health = 100;
     int armor = 25;
+    int attackPower = 105;
 
     Rooms *current;
     Player();
 
-    int heal(std::string item);
-    int takeDamage(std::string damageType);
-    int dealDamage(std::string damageType);
+    int heal(string item);
+    int takeDamage(string damageType);
+    int dealDamage(string damageType);
 
-    std::string inventory[100];
-    int pickupItem(std::string item);
-    int useItem();
+    string inventory[30];
+    int pickupItem(string item);
     int displayStats();
+    int checkInventory();
+    void useItem(string item);
+    int fightEnemy(Enemy enemy);
 };

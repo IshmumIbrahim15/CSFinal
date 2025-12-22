@@ -1,27 +1,28 @@
-#include <iostream>
+#pragma once
+
 #include <string>
 #include <vector>
 using namespace std;
 
-class Player;
+class Player;  // forward declaration
 
 class Rooms
 {
 public:
     string roomName;
     string roomDescription;
-    vector<string> roomItems;
-    vector<Rooms *> roomExits;
-    void AddExit(const string &label, Rooms *next);
-    void AddItem(string item);
-    void Print();
-    void pickupItems(Player *p);
-    
 
-    // Added by ChatGPT
-    Rooms(string name, string description, bool exit = false)
-    {
-        roomName = name;
-        roomDescription = description;
-    }
+    vector<string> roomItems;
+    vector<Rooms*> roomExits;
+    vector<string> roomChoices;
+
+    bool isExit;
+
+    Rooms(string name, string description, bool exit = false);
+
+    void AddExit(string choice, Rooms* next);
+    void AddItem(string item);
+
+    void Print();
+    void pickupItems(Player* p);
 };

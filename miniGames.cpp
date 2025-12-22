@@ -1,19 +1,5 @@
 #include <iostream>
-#include <string>
-#include <vector>
-using namespace std;
-
-class Games
-{
-public:
-    int score;
-    string playerName;
-    int rockPaperScissors();
-    int tictactoe();
-    int guessTheNumber();
-    int pong();
-    int Galaga();
-};
+#include "miniGames.h"
 
 int Games::rockPaperScissors()
 {
@@ -35,17 +21,18 @@ int Games::rockPaperScissors()
     if (player1Choice == enemyChoice)
     {
         cout << "You and the enemy both chose " << moves[player1Choice] << ". It's a tie!" << endl;
+        return 0;
     }
     else if ((player1Choice == 0 && enemyChoice == 2) || (player1Choice == 1 && enemyChoice == 0) || (player1Choice == 2 && enemyChoice == 1))
     {
         cout << "You chose " << moves[player1Choice] << ". The enemy chose " << moves[enemyChoice] << ". You win!" << endl;
+        return 1;
     }
     else
     {
         cout << "You chose " << moves[player1Choice] << ". The enemy chose " << moves[enemyChoice] << ". Enemy wins!" << endl;
+        return 2;
     }
-
-    return 0;
 }
 
 int tictactoeLogic(char boxes[])
@@ -156,43 +143,20 @@ int Games::tictactoe()
     if(tictactoeLogic(boxes) == 1)
     {
         cout << "Player 1 wins!" << endl;
+        return 1;
     }
     else if(tictactoeLogic(boxes) == 2)
     {
         cout << "Bot wins!" << endl;
+        return 2;
     }
     else
     {
         cout << "It's a tie!" << endl;
+        return 0;
     }
-
     return 0;
 }
-
-int Games::pong()
-{
-    int player1Score = 0;
-    int botScore = 0;
-
-    string player1Paddle = "|\n|\n|\n|\n|";
-    string botPaddle = "|\n|\n|\n|\n|";
-    string ball = "O";
-    string wall = "------------------------";
-    string floor = "------------------------";
-    string ceiling = "------------------------";
-
-    while (player1Score < 5 && botScore < 5)
-    {
-        cout << wall << endl;
-        cout << ceiling << endl;
-        cout << player1Paddle << " " << ball << " " << botPaddle << endl;
-        cout << floor << endl;
-        cout << "Player 1 Score: " << player1Score << " Bot Score: " << botScore << endl;
-    }
-
-    return 0;
-}
-
 
 int Games::guessTheNumber(){
     int secretNum = rand() % 100 + 1;
@@ -204,12 +168,12 @@ int Games::guessTheNumber(){
 
     int countGuesses = 1;
 
-    while (countGuesses < 5)
+    while (countGuesses < 6)
     {
         if (playerGuess == secretNum)
         {
             cout << "Congratulations! You guessed the correct number in " << countGuesses << " attempts." << endl;
-            break;
+            return 1;
         }
         else if (playerGuess < secretNum)
         {
@@ -225,5 +189,13 @@ int Games::guessTheNumber(){
         cin >> playerGuess;
     }
 
-    return 0;
+    if (playerGuess == secretNum)
+    {
+            cout << "Congratulations! You guessed the correct number in " << countGuesses << " attempts." << endl;
+            return 1;
+    }
+    
+    cout << "You got it wrong! The right number was " << secretNum << endl;
+
+    return 2;
 }
