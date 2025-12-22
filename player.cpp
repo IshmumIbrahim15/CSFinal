@@ -34,6 +34,14 @@ int Player::heal(string item)
         health += 10;
         return health;
     }
+    if (item == "Cake") {
+        if(health + 15 > 100){
+            health = 100;
+            return health;
+        }
+        health += 15;
+        return health;
+    }
     if (item == "bandage")
     {
         if (health + 5 > 100)

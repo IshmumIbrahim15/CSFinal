@@ -11,7 +11,7 @@ Rooms::Rooms(string name, string description, bool exit)
     roomDescription = description;
 }
 
-// Added by ChatGPT
+// Fixed by ChatGPT
 void Rooms::AddExit(string choice, Rooms *next)
 {
     roomChoices.push_back(choice);

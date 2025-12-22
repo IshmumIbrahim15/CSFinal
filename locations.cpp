@@ -88,6 +88,7 @@ int Locations::yourCell(Player &p)
     return dungeon(p);
 }
 
+//Made by ChatGpt
 vector<Enemy> CreateDungeonEnemies()
 {
     vector<Enemy> enemies;
@@ -172,6 +173,7 @@ int Locations::dungeon(Player &p)
 
     p.current = corridorA;
 
+    //This while loop will keep looking until you find the exit, in this case the exit is the staircase
     while (p.current != nullptr && p.current->roomName != "staircase")
     {
         p.current->Print();
@@ -237,12 +239,14 @@ int Locations::firstFloor(Player &p)
     int playerChoice;
     cin >> playerChoice;
 
+    //allows you to check your inventory
     if(playerChoice == 9){
         p.checkInventory();
         cout << "What else would you like to do?" << endl;
         cin >> playerChoice;
     }
 
+    //fighting sequence
     Enemy knight(
         35, 8,
         "Knight",
@@ -461,6 +465,7 @@ int Locations::library(Player &p)
     return 0;
 }
 
+//The watchtower is kind of optional but it gives loot, although the loot might not always be useful
 int Locations::watchTower(Player &p)
 {
     this_thread::sleep_for(chrono::seconds(1));

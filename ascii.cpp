@@ -1,3 +1,5 @@
+//I got the ascii images from ascii art websites, many of them have an unknown author. (I'm really bad at art)
+
 #include "ascii.h"
 #include <iostream>
 #include <string>

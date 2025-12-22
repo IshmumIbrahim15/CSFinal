@@ -15,7 +15,7 @@ public:
     int score = 0;
     int health = 100;
     int armor = 25;
-    int attackPower = 105;
+    int attackPower = 5;
 
     Rooms *current;
     Player();
